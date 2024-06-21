@@ -1,35 +1,39 @@
 const express = require("express");
+const path = require("path");
 const fs = require("fs");
 
 const app = express();
-const port = 4000;
-const path = require("path");
+const port = 3000; // You can choose any port you prefer
 
-app.set("view engine", "pug");
+// Middleware to serve static files from the 'songs' directory
+app.use("/static", express.static(path.join(__dirname, "songs")));
 
-// app.set("views", path.join(__dirname, "views"));
+// Route to list the names of the songs
+app.get("/", (req, res) => {
+  const songsDir = path.join(__dirname, "songs");
 
-app.get("/songs", (req, res) => {
-  const folderPath = "./songs";
-  const response = fs.readdirSync(folderPath);
-  let html = [];
-  response.map((element) => {
-    html.push(element);
+  fs.readdir(songsDir, (err, files) => {
+    if (err) {
+      return res.status(500).send("Unable to scan directory: " + err);
+    }
+
+    // Filter to only include audio files if needed
+    const songFiles = files.filter((file) => file.endsWith(".mp3")); // Adjust the extension as needed
+
+    res.send(`
+            <h1>List of Songs</h1>
+            <ul>
+                ${songFiles
+                  .map(
+                    (song) =>
+                      `<video controls autoplay> <source src="/songs/${song}" type="audio/mpeg">${song}</video>`
+                  )
+                  .join("")}
+            </ul>
+        `);
   });
-  res.render("index", { html });
 });
-
-app.use("/songs", express.static(path.join(__dirname, "./songs")));
 
 app.listen(port, () => {
-  console.log(`App is listening on Port ${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
-
-// const express = require('express');
-// const path = require('path');
-// const app = express();
-
-// app.get('/songs/:name', (req, res) => {
-//     const filePath = path.join(__dirname, 'songs', req.params.name);
-//     res.sendFile(filePath);
-// })
