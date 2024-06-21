@@ -1,4 +1,4 @@
-export default function RHalf({artistName}) {
+export default function RHalf({ artistName }) {
   return (
     <div className="mb-7 col-span-3 mt-7 flex justify-center items-center overflow-hidden">
       <div className="h-full w-full">
@@ -15,7 +15,7 @@ export default function RHalf({artistName}) {
               {artistName}
             </p>
           </div>
-        </div>
+        </div>  
 
         <div className="h-[63%] rounded-b-large bg-[#74809b] overflow-auto flex-col justify-center">
           <div className="flex justify-between items-center h-[17%] w-[95%] mx-auto mt-3">

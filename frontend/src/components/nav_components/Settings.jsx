@@ -40,7 +40,7 @@ export default function Settings() {
         <i className="fa-solid !text-[#222] !text-4xl fa-gear"></i>
         <div
           ref={menuRef}
-          className={`border-2 border-[#30363d] translate-x-6 z-10 flex flex-col items-center top-0 bg-[#415262] rounded-xl absolute w-[400px] h-[300px] transition-all duration-500 ${
+          className={`border-2 border-[#30363d] z-10 flex flex-col items-center top-0 bg-[#415262] rounded-xl absolute w-[400px] h-[300px] transition-all duration-500 ${
             settingsVisible
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"

@@ -27,11 +27,9 @@ export default function SearchBox() {
   }, []);
 
   return (
-    <div className="h-full flex flex-col items-center justify-center relative">
+    <div className="h-full mx-20 flex flex-col items-center justify-center relative">
       <div className="h-[60%] flex items-center bg-[#aaadaf] hover:bg-[#c6cacd] hover:cursor-pointer rounded-full">
-        <button
-          onClick={() => setMenu(true)}
-        >
+        <button onClick={() => setMenu(true)}>
           <div className="h-[100%] w-44 flex justify-center items-center rounded-large gap-3">
             <i className="fa-solid font-semibold !text-2xl fa-magnifying-glass"></i>
             <p className="font-semibold text-[30px]">Search</p>

@@ -4,6 +4,7 @@ export default {
   theme: {
     fontFamily: {
       ubuntu: "Ubuntu",
+      varela: "Varela Round",
     },
     extend: {
       borderRadius: {
